@@ -1,19 +1,21 @@
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using Timer = System.Windows.Forms.Timer;
 
 namespace BestOil
 {
     public partial class Form1 : Form
     {
-        List<string> namesPetrol = System.IO.File.ReadAllLines("files\\namesPetrol.txt").ToList();
-        List<string> pricesPetrol = System.IO.File.ReadAllLines("files\\pricesPetrol.txt").ToList();
-        List<string> namesProduct = System.IO.File.ReadAllLines("files\\namesProduct.txt").ToList();
-        List<string> pricesProduct = System.IO.File.ReadAllLines("files\\pricesProduct.txt").ToList();
+        BindingList<string> namesPetrol = new BindingList<string>(File.ReadAllLines("files\\namesPetrol.txt").ToList());
+        BindingList<string> pricesPetrol = new BindingList<string>(File.ReadAllLines("files\\pricesPetrol.txt").ToList());
+        BindingList<string> namesProduct = new BindingList<string>(File.ReadAllLines("files\\namesProduct.txt").ToList());
+        BindingList<string> pricesProduct = new BindingList<string>(File.ReadAllLines("files\\pricesProduct.txt").ToList());
         List<Product> products = new();
 
         Timer timer = new();
 
 
-        public Form1()
+        public Form1(bool admin)
         {
             InitializeComponent();
             this.Text = "BestOil";
@@ -63,6 +65,25 @@ namespace BestOil
                 panelMiniCafe.Controls.Add(numericUpDownAmount);
             }
             #endregion
+
+            if (admin)
+            {
+                this.Height = 350;
+                groupBox1.Size = new Size(228, 272);
+                miniCafe.Size = new Size(317, 272);
+
+                ForPayment1.Visible = false;
+                ForPayment2.Visible = false;
+                LitersMoney.Visible = false;
+                litersTextBox.Visible = false;
+                moneyTextBox.Visible = false;
+                label4.Visible = false;
+                label1.Visible = false;
+
+                GasButtons.Visible = true;
+                CafeButtons.Visible = true;
+                price.ReadOnly = false;
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -124,14 +145,14 @@ namespace BestOil
             {
                 litersTextBox.Enabled = true;
                 moneyTextBox.Enabled = false;
-                PaymentMain.Text = "For payment";
+                ForPayment1.Text = "For payment";
                 PaymentType.Text = "UAH";
             }
             else
             {
                 litersTextBox.Enabled = false;
                 moneyTextBox.Enabled = true;
-                PaymentMain.Text = "For fueling";
+                ForPayment1.Text = "For fueling";
                 PaymentType.Text = "Lit.";
             }
         }
@@ -169,6 +190,18 @@ namespace BestOil
             else
                 endSum.Text = (double.Parse(moneyTextBox.Text) + double.Parse(cafeSum.Text)).ToString();
             timer.Enabled = true;
+        }
+
+        private void deleteGas_Click(object sender, EventArgs e)
+        {
+            int index = typeOfPetrol.SelectedIndex;
+            if (MessageBox.Show($"Delete {namesPetrol[index]}?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                namesPetrol.RemoveAt(index);
+                pricesPetrol.RemoveAt(index);
+                typeOfPetrol.DataSource = namesPetrol;
+                typeOfPetrol.SelectedIndex = 0;
+            }
         }
     }
 

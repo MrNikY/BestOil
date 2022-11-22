@@ -29,14 +29,18 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.PaymentMain = new System.Windows.Forms.GroupBox();
-            this.PaymentType = new System.Windows.Forms.Label();
+            this.GasButtons = new System.Windows.Forms.GroupBox();
+            this.deleteGas = new System.Windows.Forms.Button();
+            this.addGas = new System.Windows.Forms.Button();
+            this.editGas = new System.Windows.Forms.Button();
+            this.ForPayment1 = new System.Windows.Forms.GroupBox();
             this.mainSum = new System.Windows.Forms.Label();
+            this.PaymentType = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.moneyTextBox = new System.Windows.Forms.TextBox();
             this.litersTextBox = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.LitersMoney = new System.Windows.Forms.GroupBox();
             this.Money = new System.Windows.Forms.RadioButton();
             this.liters = new System.Windows.Forms.RadioButton();
             this.currency = new System.Windows.Forms.Label();
@@ -45,9 +49,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.miniCafe = new System.Windows.Forms.GroupBox();
+            this.CafeButtons = new System.Windows.Forms.GroupBox();
+            this.deleteCafe = new System.Windows.Forms.Button();
+            this.addCafe = new System.Windows.Forms.Button();
+            this.editCafe = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ForPayment2 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cafeSum = new System.Windows.Forms.Label();
             this.panelMiniCafe = new System.Windows.Forms.Panel();
@@ -57,22 +65,25 @@
             this.endSum = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
-            this.PaymentMain.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.GasButtons.SuspendLayout();
+            this.ForPayment1.SuspendLayout();
+            this.LitersMoney.SuspendLayout();
             this.miniCafe.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.CafeButtons.SuspendLayout();
+            this.ForPayment2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.PaymentMain);
+            this.groupBox1.Controls.Add(this.GasButtons);
+            this.groupBox1.Controls.Add(this.ForPayment1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.moneyTextBox);
             this.groupBox1.Controls.Add(this.litersTextBox);
-            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Controls.Add(this.LitersMoney);
             this.groupBox1.Controls.Add(this.currency);
             this.groupBox1.Controls.Add(this.price);
             this.groupBox1.Controls.Add(this.typeOfPetrol);
@@ -81,30 +92,61 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox1.Location = new System.Drawing.Point(12, 35);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(228, 327);
+            this.groupBox1.Size = new System.Drawing.Size(228, 329);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gas station";
             // 
-            // PaymentMain
+            // GasButtons
             // 
-            this.PaymentMain.Controls.Add(this.PaymentType);
-            this.PaymentMain.Controls.Add(this.mainSum);
-            this.PaymentMain.Location = new System.Drawing.Point(6, 218);
-            this.PaymentMain.Name = "PaymentMain";
-            this.PaymentMain.Size = new System.Drawing.Size(214, 100);
-            this.PaymentMain.TabIndex = 1;
-            this.PaymentMain.TabStop = false;
-            this.PaymentMain.Text = "For payment";
+            this.GasButtons.Controls.Add(this.deleteGas);
+            this.GasButtons.Controls.Add(this.addGas);
+            this.GasButtons.Controls.Add(this.editGas);
+            this.GasButtons.Location = new System.Drawing.Point(6, 218);
+            this.GasButtons.Name = "GasButtons";
+            this.GasButtons.Size = new System.Drawing.Size(214, 45);
+            this.GasButtons.TabIndex = 5;
+            this.GasButtons.TabStop = false;
+            this.GasButtons.Visible = false;
             // 
-            // PaymentType
+            // deleteGas
             // 
-            this.PaymentType.AutoSize = true;
-            this.PaymentType.Location = new System.Drawing.Point(176, 69);
-            this.PaymentType.Name = "PaymentType";
-            this.PaymentType.Size = new System.Drawing.Size(32, 15);
-            this.PaymentType.TabIndex = 6;
-            this.PaymentType.Text = "UAH";
+            this.deleteGas.Location = new System.Drawing.Point(144, 16);
+            this.deleteGas.Name = "deleteGas";
+            this.deleteGas.Size = new System.Drawing.Size(63, 23);
+            this.deleteGas.TabIndex = 8;
+            this.deleteGas.Text = "delete";
+            this.deleteGas.UseVisualStyleBackColor = true;
+            this.deleteGas.Click += new System.EventHandler(this.deleteGas_Click);
+            // 
+            // addGas
+            // 
+            this.addGas.Location = new System.Drawing.Point(6, 16);
+            this.addGas.Name = "addGas";
+            this.addGas.Size = new System.Drawing.Size(63, 23);
+            this.addGas.TabIndex = 6;
+            this.addGas.Text = "add";
+            this.addGas.UseVisualStyleBackColor = true;
+            // 
+            // editGas
+            // 
+            this.editGas.Location = new System.Drawing.Point(75, 16);
+            this.editGas.Name = "editGas";
+            this.editGas.Size = new System.Drawing.Size(63, 23);
+            this.editGas.TabIndex = 7;
+            this.editGas.Text = "edit";
+            this.editGas.UseVisualStyleBackColor = true;
+            // 
+            // ForPayment1
+            // 
+            this.ForPayment1.Controls.Add(this.mainSum);
+            this.ForPayment1.Controls.Add(this.PaymentType);
+            this.ForPayment1.Location = new System.Drawing.Point(6, 218);
+            this.ForPayment1.Name = "ForPayment1";
+            this.ForPayment1.Size = new System.Drawing.Size(214, 103);
+            this.ForPayment1.TabIndex = 1;
+            this.ForPayment1.TabStop = false;
+            this.ForPayment1.Text = "For payment";
             // 
             // mainSum
             // 
@@ -116,6 +158,15 @@
             this.mainSum.TabIndex = 0;
             this.mainSum.Text = "00.00";
             this.mainSum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PaymentType
+            // 
+            this.PaymentType.AutoSize = true;
+            this.PaymentType.Location = new System.Drawing.Point(176, 69);
+            this.PaymentType.Name = "PaymentType";
+            this.PaymentType.Size = new System.Drawing.Size(32, 15);
+            this.PaymentType.TabIndex = 6;
+            this.PaymentType.Text = "UAH";
             // 
             // label4
             // 
@@ -152,15 +203,15 @@
             this.litersTextBox.TabIndex = 2;
             this.litersTextBox.TextChanged += new System.EventHandler(this.mainSumCount);
             // 
-            // groupBox2
+            // LitersMoney
             // 
-            this.groupBox2.Controls.Add(this.Money);
-            this.groupBox2.Controls.Add(this.liters);
-            this.groupBox2.Location = new System.Drawing.Point(6, 121);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(91, 80);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
+            this.LitersMoney.Controls.Add(this.Money);
+            this.LitersMoney.Controls.Add(this.liters);
+            this.LitersMoney.Location = new System.Drawing.Point(6, 121);
+            this.LitersMoney.Name = "LitersMoney";
+            this.LitersMoney.Size = new System.Drawing.Size(91, 80);
+            this.LitersMoney.TabIndex = 1;
+            this.LitersMoney.TabStop = false;
             // 
             // Money
             // 
@@ -232,16 +283,56 @@
             // 
             // miniCafe
             // 
+            this.miniCafe.Controls.Add(this.CafeButtons);
             this.miniCafe.Controls.Add(this.label7);
             this.miniCafe.Controls.Add(this.label6);
-            this.miniCafe.Controls.Add(this.groupBox3);
+            this.miniCafe.Controls.Add(this.ForPayment2);
             this.miniCafe.Controls.Add(this.panelMiniCafe);
             this.miniCafe.Location = new System.Drawing.Point(263, 35);
             this.miniCafe.Name = "miniCafe";
-            this.miniCafe.Size = new System.Drawing.Size(317, 327);
+            this.miniCafe.Size = new System.Drawing.Size(317, 329);
             this.miniCafe.TabIndex = 1;
             this.miniCafe.TabStop = false;
             this.miniCafe.Text = "Mini-cafe";
+            // 
+            // CafeButtons
+            // 
+            this.CafeButtons.Controls.Add(this.deleteCafe);
+            this.CafeButtons.Controls.Add(this.addCafe);
+            this.CafeButtons.Controls.Add(this.editCafe);
+            this.CafeButtons.Location = new System.Drawing.Point(51, 218);
+            this.CafeButtons.Name = "CafeButtons";
+            this.CafeButtons.Size = new System.Drawing.Size(214, 45);
+            this.CafeButtons.TabIndex = 9;
+            this.CafeButtons.TabStop = false;
+            this.CafeButtons.Visible = false;
+            // 
+            // deleteCafe
+            // 
+            this.deleteCafe.Location = new System.Drawing.Point(144, 16);
+            this.deleteCafe.Name = "deleteCafe";
+            this.deleteCafe.Size = new System.Drawing.Size(63, 23);
+            this.deleteCafe.TabIndex = 8;
+            this.deleteCafe.Text = "delete";
+            this.deleteCafe.UseVisualStyleBackColor = true;
+            // 
+            // addCafe
+            // 
+            this.addCafe.Location = new System.Drawing.Point(6, 16);
+            this.addCafe.Name = "addCafe";
+            this.addCafe.Size = new System.Drawing.Size(63, 23);
+            this.addCafe.TabIndex = 6;
+            this.addCafe.Text = "add";
+            this.addCafe.UseVisualStyleBackColor = true;
+            // 
+            // editCafe
+            // 
+            this.editCafe.Location = new System.Drawing.Point(75, 16);
+            this.editCafe.Name = "editCafe";
+            this.editCafe.Size = new System.Drawing.Size(63, 23);
+            this.editCafe.TabIndex = 7;
+            this.editCafe.Text = "edit";
+            this.editCafe.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -261,16 +352,16 @@
             this.label6.TabIndex = 3;
             this.label6.Text = "Price";
             // 
-            // groupBox3
+            // ForPayment2
             // 
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.cafeSum);
-            this.groupBox3.Location = new System.Drawing.Point(6, 221);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(305, 100);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "For payment";
+            this.ForPayment2.Controls.Add(this.label5);
+            this.ForPayment2.Controls.Add(this.cafeSum);
+            this.ForPayment2.Location = new System.Drawing.Point(6, 221);
+            this.ForPayment2.Name = "ForPayment2";
+            this.ForPayment2.Size = new System.Drawing.Size(305, 100);
+            this.ForPayment2.TabIndex = 2;
+            this.ForPayment2.TabStop = false;
+            this.ForPayment2.Text = "For payment";
             // 
             // label5
             // 
@@ -356,7 +447,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 573);
+            this.ClientSize = new System.Drawing.Size(592, 521);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.miniCafe);
             this.Controls.Add(this.groupBox1);
@@ -364,14 +455,16 @@
             this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.PaymentMain.ResumeLayout(false);
-            this.PaymentMain.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.GasButtons.ResumeLayout(false);
+            this.ForPayment1.ResumeLayout(false);
+            this.ForPayment1.PerformLayout();
+            this.LitersMoney.ResumeLayout(false);
+            this.LitersMoney.PerformLayout();
             this.miniCafe.ResumeLayout(false);
             this.miniCafe.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.CafeButtons.ResumeLayout(false);
+            this.ForPayment2.ResumeLayout(false);
+            this.ForPayment2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -387,19 +480,19 @@
         private Label currency;
         private TextBox price;
         private ComboBox typeOfPetrol;
-        private GroupBox groupBox2;
+        private GroupBox LitersMoney;
         private RadioButton Money;
         private RadioButton liters;
         private TextBox moneyTextBox;
         private TextBox litersTextBox;
         private Label label4;
         private Label label1;
-        private GroupBox PaymentMain;
+        private GroupBox ForPayment1;
         private Label PaymentType;
         private Label mainSum;
         private GroupBox miniCafe;
         private Panel panelMiniCafe;
-        private GroupBox groupBox3;
+        private GroupBox ForPayment2;
         private Label label5;
         private Label cafeSum;
         private Label label7;
@@ -409,5 +502,13 @@
         private Button count;
         private Label label8;
         private Label endSum;
+        private Button deleteGas;
+        private Button editGas;
+        private Button addGas;
+        private GroupBox GasButtons;
+        private GroupBox CafeButtons;
+        private Button deleteCafe;
+        private Button addCafe;
+        private Button editCafe;
     }
 }
