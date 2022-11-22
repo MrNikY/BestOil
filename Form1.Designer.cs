@@ -317,6 +317,7 @@
             this.deleteCafe.TabIndex = 8;
             this.deleteCafe.Text = "delete";
             this.deleteCafe.UseVisualStyleBackColor = true;
+            this.deleteCafe.Click += new System.EventHandler(this.deleteCafe_Click);
             // 
             // addCafe
             // 
@@ -326,6 +327,7 @@
             this.addCafe.TabIndex = 6;
             this.addCafe.Text = "add";
             this.addCafe.UseVisualStyleBackColor = true;
+            this.addCafe.Click += new System.EventHandler(this.addCafe_Click);
             // 
             // editCafe
             // 
@@ -335,6 +337,7 @@
             this.editCafe.TabIndex = 7;
             this.editCafe.Text = "edit";
             this.editCafe.UseVisualStyleBackColor = true;
+            this.editCafe.Click += new System.EventHandler(this.editCafe_Click);
             // 
             // label7
             // 

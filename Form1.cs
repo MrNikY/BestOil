@@ -1,5 +1,7 @@
-﻿using System.ComponentModel;
-using System.Diagnostics;
+﻿using System;
+using System.CodeDom.Compiler;
+using System.ComponentModel;
+using System.Reflection;
 using Timer = System.Windows.Forms.Timer;
 
 namespace BestOil
@@ -14,9 +16,15 @@ namespace BestOil
 
         Timer timer = new();
 
+        bool cafePriceReadOnly = true;
+
+        bool Admin = false;
+
 
         public Form1(bool admin)
         {
+            Admin = admin;
+
             InitializeComponent();
             this.Text = "BestOil";
 
@@ -28,7 +36,33 @@ namespace BestOil
             timer.Tick += Timer_Tick;
             timer.Enabled = false;
 
-            #region products
+            if (Admin)
+            {
+                this.Height = 350;
+                groupBox1.Size = new Size(228, 272);
+                miniCafe.Size = new Size(317, 272);
+
+                ForPayment1.Visible = false;
+                ForPayment2.Visible = false;
+                LitersMoney.Visible = false;
+                litersTextBox.Visible = false;
+                moneyTextBox.Visible = false;
+                label4.Visible = false;
+                label1.Visible = false;
+
+                GasButtons.Visible = true;
+                CafeButtons.Visible = true;
+                price.ReadOnly = false;
+                cafePriceReadOnly = false;
+
+                this.FormClosed += Form1_FormClosed;
+            }
+
+            CreateProducts();
+        }
+
+        private void CreateProducts()
+        {
             for (int i = 0; i < namesProduct.Count; i++)
             {
                 CheckBox checkBox = new();
@@ -55,7 +89,7 @@ namespace BestOil
                 {
                     Name = namesProduct[i],
                     Price = decimal.Parse(pricesProduct[i]),
-                    CheckBox_Enable = checkBox,
+                    CheckBox = checkBox,
                     TextBox_Price = textBoxPrice,
                     Amount = numericUpDownAmount
                 });
@@ -63,28 +97,6 @@ namespace BestOil
                 panelMiniCafe.Controls.Add(checkBox);
                 panelMiniCafe.Controls.Add(textBoxPrice);
                 panelMiniCafe.Controls.Add(numericUpDownAmount);
-            }
-            #endregion
-
-            if (admin)
-            {
-                this.Height = 350;
-                groupBox1.Size = new Size(228, 272);
-                miniCafe.Size = new Size(317, 272);
-
-                ForPayment1.Visible = false;
-                ForPayment2.Visible = false;
-                LitersMoney.Visible = false;
-                litersTextBox.Visible = false;
-                moneyTextBox.Visible = false;
-                label4.Visible = false;
-                label1.Visible = false;
-
-                GasButtons.Visible = true;
-                CafeButtons.Visible = true;
-                price.ReadOnly = false;
-
-                this.FormClosed += Form1_FormClosed;
             }
         }
 
@@ -98,7 +110,7 @@ namespace BestOil
                 {
                     product.Amount.Value = 0;
                     product.Amount.Enabled = false;
-                    product.CheckBox_Enable.Checked = false;
+                    product.CheckBox.Checked = false;
                 }
                 typeOfPetrol_SelectedIndexChanged(sender, e);
                 cafeSum.Text = "00.00";
@@ -111,8 +123,12 @@ namespace BestOil
             CheckBox check = sender as CheckBox;
             foreach (Product product in products)
             {
-                if (product.CheckBox_Enable == check)
+                if (product.CheckBox == check)
                 {
+                    if (Admin)
+                    {
+                        product.TextBox_Price.ReadOnly = false;
+                    }
                     product.Amount.Enabled = check.Checked;
                     NumericUpDownAmount_ValueChanged(sender, e);
                     break;
@@ -125,7 +141,7 @@ namespace BestOil
             decimal SumAll = 0;
             for (int i = 0; i < products.Count; i++)
             {
-                if (products[i].CheckBox_Enable.Checked == true)
+                if (products[i].CheckBox.Checked == true)
                 {
                     SumAll += products[i].Price * products[i].Amount.Value;
                 }
@@ -242,6 +258,7 @@ namespace BestOil
         private void addGas_Click(object sender, EventArgs e)
         {
             AddForm addForm = new();
+            addForm.Text = "Add Fuel";
             if (addForm.ShowDialog() == DialogResult.OK)
             {
                 namesPetrol.Add(addForm.Product);
@@ -249,6 +266,73 @@ namespace BestOil
                 typeOfPetrol.DataSource = namesPetrol;
                 typeOfPetrol.SelectedIndex = 0;
             }
+        }
+
+        private void addCafe_Click(object sender, EventArgs e)
+        {
+            AddForm addForm = new();
+            addForm.Text = "Add Product";
+            if (addForm.ShowDialog() == DialogResult.OK)
+            {
+                namesProduct.Add(addForm.Product);
+                pricesProduct.Add(addForm.Price);
+                panelMiniCafe.Controls.Clear();
+                products.Clear();
+                CreateProducts();
+            }
+        }
+
+        private void deleteCafe_Click(object sender, EventArgs e)
+        {
+            List<int> productsIndexToDelete = new();
+            string tempStr = "";
+            for (int i = 0; i < products.Count; i++)
+            {
+                if (products[i].CheckBox.Checked)
+                {
+                    productsIndexToDelete.Add(i);
+                    tempStr += $"{products[i].Name}, ";
+                }
+            }
+            tempStr = tempStr.Remove(tempStr.Length - 2);
+
+            if (MessageBox.Show($"Delete {tempStr}?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                productsIndexToDelete.Reverse();
+                foreach (int i in productsIndexToDelete)
+                {
+                    namesProduct.RemoveAt(i);
+                    pricesProduct.RemoveAt(i);
+                }
+            }
+            panelMiniCafe.Controls.Clear();
+            products.Clear();
+            CreateProducts();
+        }
+
+        private void editCafe_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < products.Count; i++)
+            {
+                if (products[i].CheckBox.Checked)
+                {
+                    try
+                    {
+                        double newPrice = Math.Round(double.Parse(products[i].TextBox_Price.Text), 2);
+
+                        if (newPrice > 0)
+                        {
+                            pricesProduct[i] = (newPrice).ToString();
+                        }
+                        else
+                            throw new Exception();
+                    }
+                    catch { MessageBox.Show("Wrong price!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                }
+            }
+            panelMiniCafe.Controls.Clear();
+            products.Clear();
+            CreateProducts();
         }
     }
 
@@ -258,7 +342,7 @@ namespace BestOil
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public CheckBox CheckBox_Enable { get; set; }
+        public CheckBox CheckBox { get; set; }
         public TextBox TextBox_Price { get; set; }
         public NumericUpDown Amount { get; set; }
     }
