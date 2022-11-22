@@ -127,6 +127,7 @@
             this.addGas.TabIndex = 6;
             this.addGas.Text = "add";
             this.addGas.UseVisualStyleBackColor = true;
+            this.addGas.Click += new System.EventHandler(this.addGas_Click);
             // 
             // editGas
             // 
@@ -136,6 +137,7 @@
             this.editGas.TabIndex = 7;
             this.editGas.Text = "edit";
             this.editGas.UseVisualStyleBackColor = true;
+            this.editGas.Click += new System.EventHandler(this.editGas_Click);
             // 
             // ForPayment1
             // 

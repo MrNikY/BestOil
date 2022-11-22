@@ -83,6 +83,8 @@ namespace BestOil
                 GasButtons.Visible = true;
                 CafeButtons.Visible = true;
                 price.ReadOnly = false;
+
+                this.FormClosed += Form1_FormClosed;
             }
         }
 
@@ -192,6 +194,17 @@ namespace BestOil
             timer.Enabled = true;
         }
 
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (MessageBox.Show("Save changes?", "!!!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                File.WriteAllLines("files\\namesPetrol.txt", namesPetrol);
+                File.WriteAllLines("files\\pricesPetrol.txt", pricesPetrol);
+                File.WriteAllLines("files\\namesProduct.txt", namesProduct);
+                File.WriteAllLines("files\\pricesProduct.txt", pricesProduct);
+            }
+        }
+
         private void deleteGas_Click(object sender, EventArgs e)
         {
             int index = typeOfPetrol.SelectedIndex;
@@ -199,6 +212,40 @@ namespace BestOil
             {
                 namesPetrol.RemoveAt(index);
                 pricesPetrol.RemoveAt(index);
+                typeOfPetrol.DataSource = namesPetrol;
+                typeOfPetrol.SelectedIndex = 0;
+                price.Text = pricesPetrol[namesPetrol.IndexOf(typeOfPetrol.Text)].ToString();
+            }
+        }
+
+        private void editGas_Click(object sender, EventArgs e)
+        {
+            int index = typeOfPetrol.SelectedIndex;
+            try
+            {
+                double newPrice = Math.Round(double.Parse(price.Text), 2);
+
+                if (newPrice > 0)
+                {
+                    if (MessageBox.Show($"Assign {newPrice} to {namesPetrol[index]}?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        pricesPetrol[index] = (newPrice).ToString();
+                    }
+                }
+                else
+                    throw new Exception();
+            }
+            catch { MessageBox.Show("Wrong price!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+            price.Text = pricesPetrol[namesPetrol.IndexOf(typeOfPetrol.Text)].ToString();
+        }
+
+        private void addGas_Click(object sender, EventArgs e)
+        {
+            AddForm addForm = new();
+            if (addForm.ShowDialog() == DialogResult.OK)
+            {
+                namesPetrol.Add(addForm.Product);
+                pricesPetrol.Add(addForm.Price);
                 typeOfPetrol.DataSource = namesPetrol;
                 typeOfPetrol.SelectedIndex = 0;
             }
