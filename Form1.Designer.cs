@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.GasButtons = new System.Windows.Forms.GroupBox();
             this.deleteGas = new System.Windows.Forms.Button();
@@ -77,6 +78,7 @@
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.GasButtons);
             this.groupBox1.Controls.Add(this.ForPayment1);
             this.groupBox1.Controls.Add(this.label4);
@@ -90,374 +92,246 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.groupBox1.Location = new System.Drawing.Point(12, 35);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(228, 329);
-            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Gas station";
             // 
             // GasButtons
             // 
+            resources.ApplyResources(this.GasButtons, "GasButtons");
             this.GasButtons.Controls.Add(this.deleteGas);
             this.GasButtons.Controls.Add(this.addGas);
             this.GasButtons.Controls.Add(this.editGas);
-            this.GasButtons.Location = new System.Drawing.Point(6, 218);
             this.GasButtons.Name = "GasButtons";
-            this.GasButtons.Size = new System.Drawing.Size(214, 45);
-            this.GasButtons.TabIndex = 5;
             this.GasButtons.TabStop = false;
-            this.GasButtons.Visible = false;
             // 
             // deleteGas
             // 
-            this.deleteGas.Location = new System.Drawing.Point(144, 16);
+            resources.ApplyResources(this.deleteGas, "deleteGas");
             this.deleteGas.Name = "deleteGas";
-            this.deleteGas.Size = new System.Drawing.Size(63, 23);
-            this.deleteGas.TabIndex = 8;
-            this.deleteGas.Text = "delete";
             this.deleteGas.UseVisualStyleBackColor = true;
             this.deleteGas.Click += new System.EventHandler(this.deleteGas_Click);
             // 
             // addGas
             // 
-            this.addGas.Location = new System.Drawing.Point(6, 16);
+            resources.ApplyResources(this.addGas, "addGas");
             this.addGas.Name = "addGas";
-            this.addGas.Size = new System.Drawing.Size(63, 23);
-            this.addGas.TabIndex = 6;
-            this.addGas.Text = "add";
             this.addGas.UseVisualStyleBackColor = true;
             this.addGas.Click += new System.EventHandler(this.addGas_Click);
             // 
             // editGas
             // 
-            this.editGas.Location = new System.Drawing.Point(75, 16);
+            resources.ApplyResources(this.editGas, "editGas");
             this.editGas.Name = "editGas";
-            this.editGas.Size = new System.Drawing.Size(63, 23);
-            this.editGas.TabIndex = 7;
-            this.editGas.Text = "edit";
             this.editGas.UseVisualStyleBackColor = true;
             this.editGas.Click += new System.EventHandler(this.editGas_Click);
             // 
             // ForPayment1
             // 
+            resources.ApplyResources(this.ForPayment1, "ForPayment1");
             this.ForPayment1.Controls.Add(this.mainSum);
             this.ForPayment1.Controls.Add(this.PaymentType);
-            this.ForPayment1.Location = new System.Drawing.Point(6, 218);
             this.ForPayment1.Name = "ForPayment1";
-            this.ForPayment1.Size = new System.Drawing.Size(214, 103);
-            this.ForPayment1.TabIndex = 1;
             this.ForPayment1.TabStop = false;
-            this.ForPayment1.Text = "For payment";
             // 
             // mainSum
             // 
-            this.mainSum.AutoSize = true;
-            this.mainSum.Font = new System.Drawing.Font("Segoe UI", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.mainSum.Location = new System.Drawing.Point(29, 37);
+            resources.ApplyResources(this.mainSum, "mainSum");
             this.mainSum.Name = "mainSum";
-            this.mainSum.Size = new System.Drawing.Size(104, 47);
-            this.mainSum.TabIndex = 0;
-            this.mainSum.Text = "00.00";
-            this.mainSum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PaymentType
             // 
-            this.PaymentType.AutoSize = true;
-            this.PaymentType.Location = new System.Drawing.Point(176, 69);
+            resources.ApplyResources(this.PaymentType, "PaymentType");
             this.PaymentType.Name = "PaymentType";
-            this.PaymentType.Size = new System.Drawing.Size(32, 15);
-            this.PaymentType.TabIndex = 6;
-            this.PaymentType.Text = "UAH";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(188, 142);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 15);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Lit.";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(188, 177);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "UAH";
             // 
             // moneyTextBox
             // 
-            this.moneyTextBox.Enabled = false;
-            this.moneyTextBox.Location = new System.Drawing.Point(103, 169);
+            resources.ApplyResources(this.moneyTextBox, "moneyTextBox");
             this.moneyTextBox.Name = "moneyTextBox";
-            this.moneyTextBox.Size = new System.Drawing.Size(79, 23);
-            this.moneyTextBox.TabIndex = 3;
             this.moneyTextBox.TextChanged += new System.EventHandler(this.mainSumCount);
             // 
             // litersTextBox
             // 
-            this.litersTextBox.Location = new System.Drawing.Point(103, 134);
+            resources.ApplyResources(this.litersTextBox, "litersTextBox");
             this.litersTextBox.Name = "litersTextBox";
-            this.litersTextBox.Size = new System.Drawing.Size(79, 23);
-            this.litersTextBox.TabIndex = 2;
             this.litersTextBox.TextChanged += new System.EventHandler(this.mainSumCount);
             // 
             // LitersMoney
             // 
+            resources.ApplyResources(this.LitersMoney, "LitersMoney");
             this.LitersMoney.Controls.Add(this.Money);
             this.LitersMoney.Controls.Add(this.liters);
-            this.LitersMoney.Location = new System.Drawing.Point(6, 121);
             this.LitersMoney.Name = "LitersMoney";
-            this.LitersMoney.Size = new System.Drawing.Size(91, 80);
-            this.LitersMoney.TabIndex = 1;
             this.LitersMoney.TabStop = false;
             // 
             // Money
             // 
-            this.Money.AutoSize = true;
-            this.Money.Location = new System.Drawing.Point(6, 49);
+            resources.ApplyResources(this.Money, "Money");
             this.Money.Name = "Money";
-            this.Money.Size = new System.Drawing.Size(62, 19);
-            this.Money.TabIndex = 1;
             this.Money.TabStop = true;
-            this.Money.Text = "Money";
             this.Money.UseVisualStyleBackColor = true;
             // 
             // liters
             // 
-            this.liters.AutoSize = true;
+            resources.ApplyResources(this.liters, "liters");
             this.liters.Checked = true;
-            this.liters.Location = new System.Drawing.Point(6, 13);
             this.liters.Name = "liters";
-            this.liters.Size = new System.Drawing.Size(50, 19);
-            this.liters.TabIndex = 0;
             this.liters.TabStop = true;
-            this.liters.Text = "liters";
             this.liters.UseVisualStyleBackColor = true;
             this.liters.CheckedChanged += new System.EventHandler(this.liters_CheckedChanged);
             // 
             // currency
             // 
-            this.currency.AutoSize = true;
-            this.currency.Location = new System.Drawing.Point(188, 83);
+            resources.ApplyResources(this.currency, "currency");
             this.currency.Name = "currency";
-            this.currency.Size = new System.Drawing.Size(32, 15);
-            this.currency.TabIndex = 1;
-            this.currency.Text = "UAH";
             // 
             // price
             // 
-            this.price.Location = new System.Drawing.Point(61, 75);
+            resources.ApplyResources(this.price, "price");
             this.price.Name = "price";
             this.price.ReadOnly = true;
-            this.price.Size = new System.Drawing.Size(121, 23);
-            this.price.TabIndex = 1;
             // 
             // typeOfPetrol
             // 
+            resources.ApplyResources(this.typeOfPetrol, "typeOfPetrol");
             this.typeOfPetrol.FormattingEnabled = true;
-            this.typeOfPetrol.Location = new System.Drawing.Point(61, 37);
             this.typeOfPetrol.Name = "typeOfPetrol";
-            this.typeOfPetrol.Size = new System.Drawing.Size(121, 23);
-            this.typeOfPetrol.TabIndex = 1;
             this.typeOfPetrol.SelectedIndexChanged += new System.EventHandler(this.typeOfPetrol_SelectedIndexChanged);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 78);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 15);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Price";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 40);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 15);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Fuel";
             // 
             // miniCafe
             // 
+            resources.ApplyResources(this.miniCafe, "miniCafe");
             this.miniCafe.Controls.Add(this.CafeButtons);
             this.miniCafe.Controls.Add(this.label7);
             this.miniCafe.Controls.Add(this.label6);
             this.miniCafe.Controls.Add(this.ForPayment2);
             this.miniCafe.Controls.Add(this.panelMiniCafe);
-            this.miniCafe.Location = new System.Drawing.Point(263, 35);
             this.miniCafe.Name = "miniCafe";
-            this.miniCafe.Size = new System.Drawing.Size(317, 329);
-            this.miniCafe.TabIndex = 1;
             this.miniCafe.TabStop = false;
-            this.miniCafe.Text = "Mini-cafe";
             // 
             // CafeButtons
             // 
+            resources.ApplyResources(this.CafeButtons, "CafeButtons");
             this.CafeButtons.Controls.Add(this.deleteCafe);
             this.CafeButtons.Controls.Add(this.addCafe);
             this.CafeButtons.Controls.Add(this.editCafe);
-            this.CafeButtons.Location = new System.Drawing.Point(51, 218);
             this.CafeButtons.Name = "CafeButtons";
-            this.CafeButtons.Size = new System.Drawing.Size(214, 45);
-            this.CafeButtons.TabIndex = 9;
             this.CafeButtons.TabStop = false;
-            this.CafeButtons.Visible = false;
             // 
             // deleteCafe
             // 
-            this.deleteCafe.Location = new System.Drawing.Point(144, 16);
+            resources.ApplyResources(this.deleteCafe, "deleteCafe");
             this.deleteCafe.Name = "deleteCafe";
-            this.deleteCafe.Size = new System.Drawing.Size(63, 23);
-            this.deleteCafe.TabIndex = 8;
-            this.deleteCafe.Text = "delete";
             this.deleteCafe.UseVisualStyleBackColor = true;
             this.deleteCafe.Click += new System.EventHandler(this.deleteCafe_Click);
             // 
             // addCafe
             // 
-            this.addCafe.Location = new System.Drawing.Point(6, 16);
+            resources.ApplyResources(this.addCafe, "addCafe");
             this.addCafe.Name = "addCafe";
-            this.addCafe.Size = new System.Drawing.Size(63, 23);
-            this.addCafe.TabIndex = 6;
-            this.addCafe.Text = "add";
             this.addCafe.UseVisualStyleBackColor = true;
             this.addCafe.Click += new System.EventHandler(this.addCafe_Click);
             // 
             // editCafe
             // 
-            this.editCafe.Location = new System.Drawing.Point(75, 16);
+            resources.ApplyResources(this.editCafe, "editCafe");
             this.editCafe.Name = "editCafe";
-            this.editCafe.Size = new System.Drawing.Size(63, 23);
-            this.editCafe.TabIndex = 7;
-            this.editCafe.Text = "edit";
             this.editCafe.UseVisualStyleBackColor = true;
             this.editCafe.Click += new System.EventHandler(this.editCafe_Click);
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(214, 22);
+            resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 15);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Amount";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(133, 22);
+            resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 15);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Price";
             // 
             // ForPayment2
             // 
+            resources.ApplyResources(this.ForPayment2, "ForPayment2");
             this.ForPayment2.Controls.Add(this.label5);
             this.ForPayment2.Controls.Add(this.cafeSum);
-            this.ForPayment2.Location = new System.Drawing.Point(6, 221);
             this.ForPayment2.Name = "ForPayment2";
-            this.ForPayment2.Size = new System.Drawing.Size(305, 100);
-            this.ForPayment2.TabIndex = 2;
             this.ForPayment2.TabStop = false;
-            this.ForPayment2.Text = "For payment";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(252, 69);
+            resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 15);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "UAH";
             // 
             // cafeSum
             // 
-            this.cafeSum.AutoSize = true;
-            this.cafeSum.Font = new System.Drawing.Font("Segoe UI", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cafeSum.Location = new System.Drawing.Point(41, 37);
+            resources.ApplyResources(this.cafeSum, "cafeSum");
             this.cafeSum.Name = "cafeSum";
-            this.cafeSum.Size = new System.Drawing.Size(104, 47);
-            this.cafeSum.TabIndex = 0;
-            this.cafeSum.Text = "00.00";
-            this.cafeSum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelMiniCafe
             // 
-            this.panelMiniCafe.AutoScroll = true;
-            this.panelMiniCafe.Location = new System.Drawing.Point(6, 40);
+            resources.ApplyResources(this.panelMiniCafe, "panelMiniCafe");
             this.panelMiniCafe.Name = "panelMiniCafe";
-            this.panelMiniCafe.Size = new System.Drawing.Size(305, 161);
-            this.panelMiniCafe.TabIndex = 0;
             // 
             // groupBox4
             // 
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.count);
             this.groupBox4.Controls.Add(this.endSum);
             this.groupBox4.Controls.Add(this.pictureBox1);
-            this.groupBox4.Location = new System.Drawing.Point(12, 385);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(568, 130);
-            this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "For payment";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(509, 89);
+            resources.ApplyResources(this.label8, "label8");
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(32, 15);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "UAH";
             // 
             // count
             // 
-            this.count.Location = new System.Drawing.Point(137, 22);
+            resources.ApplyResources(this.count, "count");
             this.count.Name = "count";
-            this.count.Size = new System.Drawing.Size(145, 100);
-            this.count.TabIndex = 1;
-            this.count.Text = "Count";
             this.count.UseVisualStyleBackColor = true;
             this.count.Click += new System.EventHandler(this.count_Click);
             // 
             // endSum
             // 
-            this.endSum.AutoSize = true;
-            this.endSum.Font = new System.Drawing.Font("Segoe UI", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.endSum.Location = new System.Drawing.Point(352, 57);
+            resources.ApplyResources(this.endSum, "endSum");
             this.endSum.Name = "endSum";
-            this.endSum.Size = new System.Drawing.Size(104, 47);
-            this.endSum.TabIndex = 7;
-            this.endSum.Text = "00.00";
-            this.endSum.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, 22);
+            resources.ApplyResources(this.pictureBox1, "pictureBox1");
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 521);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.miniCafe);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
-            this.Text = "Form1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.GasButtons.ResumeLayout(false);

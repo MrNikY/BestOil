@@ -1,7 +1,4 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.ComponentModel;
-using System.Reflection;
+﻿using System.ComponentModel;
 using Timer = System.Windows.Forms.Timer;
 
 namespace BestOil
@@ -21,9 +18,23 @@ namespace BestOil
         bool Admin = false;
 
 
-        public Form1(bool admin)
+        public Form1(bool admin, string lan)
         {
             Admin = admin;
+
+            switch (lan)
+            {
+                case "Ukrainian":
+                    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("uk-UA");
+                    System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("uk-UA");
+                    break;
+
+                default:
+                    System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-EN");
+                    System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-EN");
+                    break;
+            }
+
 
             InitializeComponent();
             this.Text = "BestOil";
@@ -88,7 +99,7 @@ namespace BestOil
                 products.Add(new Product
                 {
                     Name = namesProduct[i],
-                    Price = decimal.Parse(pricesProduct[i]),
+                    Price = Convert.ToDecimal(pricesProduct[i], new System.Globalization.CultureInfo("en-En")),
                     CheckBox = checkBox,
                     TextBox_Price = textBoxPrice,
                     Amount = numericUpDownAmount
@@ -127,7 +138,7 @@ namespace BestOil
                 {
                     if (Admin)
                     {
-                        product.TextBox_Price.ReadOnly = false;
+                        product.TextBox_Price.ReadOnly = !(product.TextBox_Price.ReadOnly);
                     }
                     product.Amount.Enabled = check.Checked;
                     NumericUpDownAmount_ValueChanged(sender, e);

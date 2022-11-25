@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace BestOil
+﻿namespace BestOil
 {
     public partial class LoginForm : Form
     {
@@ -21,7 +11,7 @@ namespace BestOil
         {
             if (textBox1.Text != "")
             {
-                Form1 bestOil = new Form1(textBox1.Text == "admin" ? true : false);
+                Form1 bestOil = new Form1(textBox1.Text == "admin" ? true : false, comboBox1.Text);
                 bestOil.ShowDialog();
             }
         }
